@@ -19,7 +19,7 @@ const AuthContainer: React.FC = () => {
   const loginHandler = (event: React.FormEvent) => {
     event.preventDefault();
     if(userEmail.trim().length > 0 && userPassword.trim().length > 0 ){
-        authCtx.login(Math.random().toString().replace(".", ""));
+        authCtx.login(userEmail, userPassword);
     }
   };
 

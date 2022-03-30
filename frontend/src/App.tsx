@@ -1,9 +1,7 @@
 import React, { useContext } from "react";
 
-
 // context
 import { AuthContext } from "./context/auth-context";
-
 
 // routes
 import {
@@ -12,6 +10,7 @@ import {
 } from "./routes/App.routes";
 
 const App: React.FC = () => {
+
 
   const authCtx = useContext(AuthContext);
   const isLoggedIn = authCtx.isLoggedIn;

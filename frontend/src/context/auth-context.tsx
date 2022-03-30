@@ -4,13 +4,13 @@ import React, { createContext, useState, useCallback, useEffect } from "react";
 /* eslint-disable  @typescript-eslint/no-unused-vars */
 // import { Context } from "vm";
 // import { useEffect } from 'react';
-
-
+import { signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { auth } from "../firebase.config";
 
 const AuthContext = createContext({
   isLoggedIn: false,
-  login: (token: string) => {},
-  logout: () => {}
+  login: (email: string, password: string) => {},
+  logout: () => {},
 });
 
 const retrieveStoredToken = () => {
@@ -28,26 +28,27 @@ const AuthProvider: React.FC = ({ children }) => {
   }
 
   const [token, setToken] = useState(initialToken);
+  const [userIsLoggedIn, setIsLoggedIn] = useState(!!token);
 
-  const [userIsLoggedIn, setIsLoggedIn] = useState(!!token)
-  
-  useEffect(()=> {
-    setIsLoggedIn(!!token)
-  }, [token])
-
+  useEffect(() => {
+    setIsLoggedIn(!!token);
+  }, [token]);
 
   const logoutHandler = useCallback(() => {
     localStorage.removeItem("token");
-    setToken(null);
-
-    // history.push('/')
-    // setLoggedIn(false);
+    signOut(auth)
+    setToken(null)
   }, []);
 
-  const loginHandler = (token: string) => {
-    localStorage.setItem("token", token);
-    setToken(token);
-    // setLoggedIn(true);
+  const loginHandler = (email: string, password: string) => {
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userData) => userData.user.getIdTokenResult())
+      .then((token) => {
+        const userToken = token.token;
+        setToken(userToken);
+        localStorage.setItem("token", userToken);
+      })
+      .catch((err) => console.log(err.message));
   };
 
   const authContextValue = {
