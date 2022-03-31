@@ -71,8 +71,14 @@ const config: Configuration = {
     static: path.join(__dirname, "build"),
     historyApiFallback: true,
     port: 3000,
+    host: "0.0.0.0",
+    allowedHosts: 'all',
+    compress: false,
     open: true,
     hot: true,
+    proxy: {
+      '/api': 'http://localhost:3001'
+    }
   },
 };
 

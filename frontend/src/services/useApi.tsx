@@ -11,7 +11,6 @@ export default function useApi ():any{
    const [isLoading, setIsLoading] = useState(false);
    
    const fetchData = useCallback(async () => {
-     console.log(URL)
      setIsLoading(true)
 
      try{
