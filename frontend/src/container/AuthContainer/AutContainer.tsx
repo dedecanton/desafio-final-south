@@ -32,12 +32,14 @@ const AuthContainer: React.FC = () => {
   } 
 
 
+
+
   return (
     <Container height="100vh">
       <BackgroundLogin>
         <LoginImage />
       </BackgroundLogin>
-      <InputArea onLogin={loginHandler} onChangeEmail={changeEmailHandler} onChangePassword={changePasswordHandler}   />
+      <InputArea onLoginGoogle={authCtx.loginGoogle} onLogin={loginHandler} onChangeEmail={changeEmailHandler} onChangePassword={changePasswordHandler}   />
     </Container>
   );
 };

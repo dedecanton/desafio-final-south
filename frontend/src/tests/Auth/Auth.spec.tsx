@@ -6,6 +6,7 @@ import InputArea from "../../pages/Auth/InputArea";
 const onLogin = jest.fn(e => e.preventDefault());
 const onChangeEmail = jest.fn();
 const onChangePassword = jest.fn();
+const onLoginGoogle = jest.fn()
 
 describe("Auth tests", () => {
 
@@ -15,6 +16,7 @@ describe("Auth tests", () => {
               onLogin={onLogin}
               onChangeEmail={onChangeEmail}
               onChangePassword={onChangePassword}
+              onLoginGoogle={onLoginGoogle}
             />
           );
     })
@@ -39,11 +41,17 @@ describe("Auth tests", () => {
       expect(onChangePassword).toBeCalledTimes(5)
   })
 
-  test('on button click, should call onLogin', async () => {
+  test('on button "Entrar" click, should call onLogin', async () => {
     const user = userEvent.setup()
     const button = screen.getByText('Entrar')
     await user.click(button)
     expect(onLogin).toBeCalledTimes(1)
+})
+  test('on button "Entrar com Google" click , should call onLoginGoogle', async () => {
+    const user = userEvent.setup()
+    const button = screen.getByText('Entrar com Google')
+    await user.click(button)
+    expect(onLoginGoogle).toBeCalledTimes(1)
 })
 
 test('submit without data', () => {

@@ -11,9 +11,10 @@ type InputAreaProps = {
     onLogin: (event: React.FormEvent) => void;
     onChangeEmail: (email:string) => void;
     onChangePassword: (password:string) => void;
+    onLoginGoogle: () => void
 }
 
-const InputArea = ({onLogin, onChangeEmail, onChangePassword}:InputAreaProps):any => {
+const InputArea = ({onLogin, onChangeEmail, onChangePassword, onLoginGoogle}:InputAreaProps):any => {
 
 
     const emailTyped = useRef<HTMLInputElement>(null)
@@ -62,6 +63,9 @@ const InputArea = ({onLogin, onChangeEmail, onChangePassword}:InputAreaProps):an
             type="submit"
           />
         </Form>
+
+        <Button onClick={onLoginGoogle} text='Entrar com Google' width="90%"
+            addStyle="@media (min-width:980px){width: auto} margin-top: .5rem;" />
       </InputAreaContainer>
     );
 
