@@ -5,11 +5,9 @@ build:
       worker: ./nginx
 
   api:
-    build:
       dockerfile: Dockerfile
       worker: "./server"
 
   client:
-    build:
       dockerfile: Dockerfile
       worker: ./frontend
