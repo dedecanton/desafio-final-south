@@ -23,23 +23,26 @@ describe("Auth tests", () => {
     expect(screen.getByText("Que bom que você voltou!")).toBeVisible()
   });
 
-  test('on change email input, should call onChangeEmail', () => {
+  test('on change email input, should call onChangeEmail', async () => {
+      const user = userEvent.setup()
       const emailInput = screen.getByLabelText('Email')
-      userEvent.type(emailInput, 'teste')
+      await user.type(emailInput, 'teste')
 
       expect(onChangeEmail).toBeCalledTimes(5)
   })
 
-  test('on change password input, should call onChangeEmail', () => {
+  test('on change password input, should call onChangeEmail', async () => {
+    const user = userEvent.setup()
       const passwordInput = screen.getByLabelText('Senha')
-      userEvent.type(passwordInput, 'teste')
+      await user.type(passwordInput, 'teste')
 
       expect(onChangePassword).toBeCalledTimes(5)
   })
 
-  test('on button click, should call onLogin', () => {
+  test('on button click, should call onLogin', async () => {
+    const user = userEvent.setup()
     const button = screen.getByText('Entrar')
-    userEvent.click(button)
+    await user.click(button)
     expect(onLogin).toBeCalledTimes(1)
 })
 

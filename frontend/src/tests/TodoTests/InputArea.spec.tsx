@@ -23,29 +23,32 @@ describe("InputArea tests", () => {
     expect(button).toBeVisible();
   });
 
-  test("testing user add task with button", () => {
+  test("testing user add task with button", async () => {
+    const user = userEvent.setup()
     const input = screen.getByPlaceholderText("Descrição da tarefa...");
     const button = screen.getByText("Adicionar");
 
-    userEvent.type(input, "teste");
-    userEvent.click(button);
+    await user.type(input, "teste");
+    await user.click(button);
 
     expect(onAddTask).toBeCalledTimes(1);
   });
-  test("testing user add task with enter", () => {
+  test("testing user add task with enter",async () => {
+    const user = userEvent.setup()
     const input = screen.getByPlaceholderText("Descrição da tarefa...");
 
-    userEvent.type(input, "teste");
-    userEvent.keyboard("{enter}");
+    await user.type(input, "teste");
+    await user.keyboard("{enter}");
 
     expect(onAddTask).toHaveBeenCalledTimes(1);
   });
-  test("testing user add task with enter", () => {
+  test("testing user add task with enter", async () => {
+    const user = userEvent.setup()
     const input = screen.getByPlaceholderText("Descrição da tarefa...");
     const button = screen.getByText("Adicionar");
 
-    userEvent.type(input, " ");
-    userEvent.click(button);
+    await user.type(input, " ");
+    await user.click(button);
     expect(onAddTask).not.toBeCalled();
   });
 });

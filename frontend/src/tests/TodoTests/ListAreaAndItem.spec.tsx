@@ -37,15 +37,17 @@ describe("ListArea tests", () => {
     expect(removeButtons).toHaveLength(4);
   });
 
-  test("on button click should call onTaskRemove function", () => {
+  test("on button click should call onTaskRemove function", async () => {
+    const user = userEvent.setup()
     const removeButton = screen.getAllByText("Remover da lista")[2];
-    userEvent.click(removeButton);
+    await user.click(removeButton);
     expect(onTaskRemove).toBeCalledTimes(1);
   });
 
-  test("on checkbox click should call onTaskChange function", () => {
+  test("on checkbox click should call onTaskChange function", async () => {
+    const user = userEvent.setup()
     const checkbox = screen.getAllByRole("checkbox")[3];
-    userEvent.click(checkbox);
+    await user.click(checkbox);
     expect(onTaskChange).toBeCalledTimes(1);
   });
 

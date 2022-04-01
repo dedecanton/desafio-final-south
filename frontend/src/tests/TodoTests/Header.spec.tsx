@@ -24,12 +24,13 @@ describe('Todo Tests', () => {
         expect(header).toBeVisible()
     })
 
-    test('click on logout button should call function onclick', () => {
+    test('click on logout button should call function onclick', async () => {
+        const user = userEvent.setup()
         const button = screen.getByRole('button')
         const handleClick = jest.fn()
         button.onclick = handleClick
 
-        userEvent.click(button)
+        await user.click(button)
         expect(handleClick).toHaveBeenCalledTimes(1)
     })
 
