@@ -6,6 +6,7 @@ import { Title, Form, InputGroup, Label, InputAreaContainer, Input } from "./Inp
 
 // import Input from "../../../components/Input";
 import Button from "../../../components/Button";
+import GoogleButton from "../../../components/GoogleButton";
 
 type InputAreaProps = {
     onLogin: (event: React.FormEvent) => void;
@@ -64,8 +65,7 @@ const InputArea = ({onLogin, onChangeEmail, onChangePassword, onLoginGoogle}:Inp
           />
         </Form>
 
-        <Button onClick={onLoginGoogle} text='Entrar com Google' width="90%"
-            addStyle="@media (min-width:980px){width: auto} margin-top: .5rem;" />
+        <GoogleButton onClick={onLoginGoogle}>Entrar com Google</GoogleButton>
       </InputAreaContainer>
     );
 
