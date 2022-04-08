@@ -5,6 +5,8 @@ import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import ESLintPlugin from "eslint-webpack-plugin";
 import { CleanWebpackPlugin } from "clean-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const Dotenv = require('dotenv-webpack')
 
 const config: Configuration = {
   mode: "production",
@@ -57,6 +59,7 @@ const config: Configuration = {
     new MiniCssExtractPlugin({
       filename: "[name].[contenthash].css",
     }),
+    new Dotenv(),
   ],
 };
 

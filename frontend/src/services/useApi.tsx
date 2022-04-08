@@ -2,8 +2,8 @@
 import { useCallback, useEffect, useState } from "react"
 import { ListItemType } from "../types/ListItem.type";
 
-const URL = '/api/todo'
-
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+const URL = process.env.REACT_APP_PATH_API!
 
 export default function useApi ():any{
 

@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
 const path = require('path')
+const Dotenv = require('dotenv-webpack');
 import { Configuration, HotModuleReplacementPlugin } from "webpack";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import { Configuration as WebpackDevServerConfiguration } from "webpack-dev-server";
@@ -65,6 +66,7 @@ const config: Configuration = {
     new ESLintPlugin({
       extensions: ["js", "jsx", "ts", "tsx"],
     }),
+    new Dotenv(),
   ],
   devtool: "inline-source-map",
   devServer: {

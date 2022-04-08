@@ -31,7 +31,6 @@ const Header = () => {
     navigate("/auth", { replace: true });
   };
 
-  <button onClick={logoutHandler}>Logout</button>;
   return (
     <C.Header>
       <Container addStyle={addContainerStyles}>

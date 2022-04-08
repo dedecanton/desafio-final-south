@@ -1,9 +1,10 @@
 /* eslint-disable */
+require('dotenv').config()
 const express = require('express')
 const { createProxyMiddleware } = require('http-proxy-middleware');
 const path = require("path");
 
-const URL = 'https://62224954666291106a22d82f.mockapi.io/'
+const URL = process.env.API_URL
 
 const app = express()
 
